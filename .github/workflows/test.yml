@@ -19,13 +19,14 @@ jobs:
       - name: Check out the tap
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
+      - name: Tap the checked-out workspace
+        run: brew tap Demonbane18/relmio "$GITHUB_WORKSPACE"
+
       - name: Audit the formula
-        run: brew audit --strict Formula/relmio.rb
+        run: brew audit --strict Demonbane18/relmio/relmio
 
       - name: Install from this tap
-        run: |
-          brew tap Demonbane18/relmio "$GITHUB_WORKSPACE"
-          brew install Demonbane18/relmio/relmio
+        run: brew install Demonbane18/relmio/relmio
 
       - name: Smoke-test the installed command
         run: |
