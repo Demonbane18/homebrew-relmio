@@ -1,0 +1,33 @@
+name: Test tap
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: macos-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the tap
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - name: Audit the formula
+        run: brew audit --strict Formula/relmio.rb
+
+      - name: Install from this tap
+        run: |
+          brew tap Demonbane18/relmio "$GITHUB_WORKSPACE"
+          brew install Demonbane18/relmio/relmio
+
+      - name: Smoke-test the installed command
+        run: |
+          test "$(relmio --version)" = "0.2.14"
+          brew test Demonbane18/relmio/relmio
