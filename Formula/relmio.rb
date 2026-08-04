@@ -5,8 +5,8 @@ class Relmio < Formula
   sha256 "a6ac6426404d6d2d9c6313e7715034d4085056175776af2f6de5b4686858778d"
   license "Apache-2.0"
 
-  depends_on "node"
   depends_on "python" => :build
+  depends_on "node"
 
   def install
     system "npm", "install", *std_npm_args
