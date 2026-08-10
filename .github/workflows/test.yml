@@ -30,5 +30,10 @@ jobs:
 
       - name: Smoke-test the installed command
         run: |
-          test "$(relmio --version)" = "0.2.14"
+          expected_version="$(
+            brew info --json=v2 Demonbane18/relmio/relmio |
+              ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("formulae").fetch(0).fetch("versions").fetch("stable")'
+          )"
+          test -n "$expected_version"
+          test "$(relmio --version)" = "$expected_version"
           brew test Demonbane18/relmio/relmio
