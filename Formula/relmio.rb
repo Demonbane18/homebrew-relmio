@@ -1,8 +1,8 @@
 class Relmio < Formula
   desc "Set up a private OpenAI-compatible endpoint for self-hosted n8n"
   homepage "https://github.com/Demonbane18/relmio"
-  url "https://registry.npmjs.org/relmio/-/relmio-0.8.1.tgz"
-  sha256 "e5212eaa54d7fdd8863f1cdc6c974a4e16c0587c3a2d97e264be88b7a9099d5e"
+  url "https://registry.npmjs.org/relmio/-/relmio-0.9.0.tgz"
+  sha256 "7bd80609e3ef45663d56fa17aba95c264891b304efe42c1c32613682ea0998b2"
   license "Apache-2.0"
 
   depends_on "python" => :build
