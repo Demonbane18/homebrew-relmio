@@ -4,8 +4,12 @@ Install [Relmio](https://github.com/Demonbane18/relmio) on macOS or Linux:
 
 ```sh
 brew tap Demonbane18/relmio
+brew trust --formula Demonbane18/relmio/relmio
 brew install relmio
 ```
+
+Homebrew 6 and later load formulae from non-official taps only after you trust
+them. The second command trusts only the Relmio formula, not the whole tap.
 
 Then start the local installation wizard:
 
