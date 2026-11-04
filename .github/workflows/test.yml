@@ -22,6 +22,10 @@ jobs:
       - name: Tap the checked-out workspace
         run: brew tap Demonbane18/relmio "$GITHUB_WORKSPACE"
 
+      # Homebrew 6+ refuses to load formulae from non-official taps until they are trusted.
+      - name: Trust only the Relmio formula
+        run: brew trust --formula Demonbane18/relmio/relmio
+
       - name: Audit the formula
         run: brew audit --strict Demonbane18/relmio/relmio
 
